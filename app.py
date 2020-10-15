@@ -9,7 +9,7 @@ from components.card_creator import make_graph_card
 
 from dash.dependencies import Input, Output
 
-external_stylesheets = [dbc.themes.MATERIA]
+external_stylesheets = [dbc.themes.CYBORG]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
@@ -18,12 +18,10 @@ donut_card = make_graph_card("Donut Graph", number=1)
 bar_card = make_graph_card("Bar Graph", number=2)
 
 card_container_style = {"width": "100%",
-                        "margin-left": "30px",
-                        "margin-right": "30px",
                         "margin-top": "10px"}
 
 app.layout = html.Div([
-    html.H1("Sentiment Analyzer", style={"text-align":"center"}),
+    html.H1("Sentiment Analyzer", style={"text-align": "center"}),
     html.Div(id="top-container",
              className="jumbotron",
              children=[
@@ -38,7 +36,9 @@ app.layout = html.Div([
                      ],
             )],
              style=card_container_style)
-    ])
+    ],
+    style={"width": "100%"}
+)
 
 
 
@@ -60,4 +60,4 @@ def update_sentiment_div(input_value):
 
 
 if __name__ == '__main__':
-    app.run_server(host='localhost', debug=True)
+    app.run_server(host='localhost')
